@@ -88,6 +88,7 @@ public class ApplicationTest {
         AccountDAO accountDAO = expenseManager.getAccountsDAO();
         TransactionDAO transactionDAO = expenseManager.getTransactionsDAO();
 
+        //test updateAccountBalance funtion
         try {
             double previousBalance = accountDAO.getAccount(testAccountNO).getBalance();
             expenseManager.updateAccountBalance(testAccountNO, 22, 5, 2022, ExpenseType.INCOME, "250.00");

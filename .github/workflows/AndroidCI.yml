@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         api-level: [26]
@@ -17,10 +17,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: Gradle cache
+      - name: cache(gradle)
         uses: gradle/gradle-build-action@v2
         
-      - name: AVD cache
+      - name: cache(AVD)
         uses: actions/cache@v3
         id: avd-cache
         with:

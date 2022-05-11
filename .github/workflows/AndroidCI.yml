@@ -21,7 +21,7 @@ jobs:
         uses: gradle/gradle-build-action@v2
 
       - name: cache(AVD)
-        uses: action/cache@v3
+        uses: actions/cache@v3
         id: avd-cache
         with:
           path: |

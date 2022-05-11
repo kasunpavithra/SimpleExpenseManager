@@ -64,9 +64,19 @@ public class ApplicationTest {
         transactionDAO.logTransaction(date,testAccountNO, ExpenseType.INCOME,250.00);
         Transaction transaction = new Transaction(date,testAccountNO,ExpenseType.INCOME,250.00);
         List<Transaction> transactionsFromDatabase = transactionDAO.getPaginatedTransactionLogs(10);
-        assertTrue(transactionsFromDatabase.get(0).getAccountNo().equals(transaction.getAccountNo()));
-        assertTrue(transactionsFromDatabase.get(0).getAmount()==transaction.getAmount());
-        assertTrue(isSameDate(transaction.getDate(),transactionsFromDatabase.get(0).getDate()));
+
+        Transaction trn=null;
+        for (Transaction trnscn: transactionsFromDatabase) {
+            if(trnscn.getAccountNo().equals(transaction.getAccountNo())){
+                trn = trnscn;
+                break;
+            }
+        }
+        if(trn==null) assertTrue(false);
+
+        assertTrue(trn.getAccountNo().equals(transaction.getAccountNo()));
+        assertTrue(trn.getAmount()==transaction.getAmount());
+        assertTrue(isSameDate(transaction.getDate(),trn.getDate()));
 
     }
 
